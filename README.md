@@ -2,6 +2,10 @@
 Workflow for the Illumina TruSight Myeloid target-based coverage analysis using Snakemake.
 
 
+## General Information
+For each Illumina TruSight Myeloid Panel sequencing run on the MiSeq, a target-based coverage analysis is performed to identify the mean coverage, regions and bases failed to reach the target coverage. For this, a coverage threshold of 500x and exon/intron boundaries of +/-20bp based on the coding sequences of the target regions were defined. The snakemake workflow will be executed from the corresponding flowcell directory and the output data will be stored in a toplevel directory called "coverage". The main results of the coverage analyses are stored in sample-wise manner in excel-based worksheets. 
+
+
 ## Requirement
 - Linux (tested on Debian v9.13)
 - snakemake v7.25.0   
@@ -9,10 +13,6 @@ Workflow for the Illumina TruSight Myeloid target-based coverage analysis using 
 - mosdepth v0.3.3
 - bedtools v2.28.0
 - r-xlsx v0.6.5
-
-
-## General Information
-For each Illumina TruSight Myeloid Panel sequencing run on the MiSeq, a target-based coverage analysis is performed to identify the mean coverage, regions and bases failed to reach the target coverage. For this, a coverage threshold of 500x and exon/intron boundaries of +/-20bp based on the coding sequences of the target regions were defined. The snakemake workflow will be executed from the corresponding flowcell directory and the output data will be stored in a toplevel directory called "coverage". The main results of the coverage analyses are stored in sample-wise manner in excel-based worksheets. 
 
 
 ## Usage
