@@ -16,7 +16,7 @@ For each Illumina TruSight Myeloid amplicon-based sequencing run, a target-based
 
 
 ## Usage
-1. Create a samplesheet with the corresponding samples and targeted genes as depicted here. The file should be named as following "Run_" + "Date" + "_Genliste.txt" and stored in the toplevel directory of the flowcell folder:
+1. Create a samplesheet with the corresponding samples and targeted genes as depicted here. First column with sample ids should be tab seperated and the corresponding genes comma seperated. The file should be named as following "Run_" + "Date" + "_Genliste.txt" and stored in the toplevel directory of the flowcell folder. 
 
 ```bash
 57204	ASXL1,TP53,RUNX1,IDH1,IDH2
