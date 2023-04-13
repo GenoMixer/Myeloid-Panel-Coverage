@@ -16,7 +16,13 @@ For each Illumina TruSight Myeloid amplicon-based sequencing run, a target-based
 
 
 ## Usage
-1. Create a samplesheet with the corresponding samples and targeted genes as depicted here. First column with sample ids should be tab seperated and the corresponding genes comma seperated. The file should be named as following "Run_" + "Date" + "_Genliste.txt" and stored in the toplevel directory of the flowcell folder. 
+1. Change directory to the MiSeq Flowcell Folder of the current sequencing run for which the coverage analysis should be run.
+
+```bash
+cd /mnt/nas-5268189/ifh-rechenzentrum1/illumina/MiSeqOutput/
+```
+
+2. Create a samplesheet with the corresponding samples and targeted genes as depicted here. First column with sample ids should be tab seperated and the corresponding genes comma seperated. The file should be named as following "Run_" + "Date" + "_Genliste.txt" and stored in the toplevel directory of the flowcell folder. 
 
 ```bash
 57204	ASXL1,TP53,RUNX1,IDH1,IDH2
@@ -29,19 +35,19 @@ For each Illumina TruSight Myeloid amplicon-based sequencing run, a target-based
 57307	ASXL1,TP53,RUNX1,IDH1,IDH2
 ```
 
-2. Clone the repository into the runfolder:
+3. Clone the repository into the runfolder:
 
     ```bash
     git clone https://github.com/GenoMixer/Myeloid-Panel-Coverage.git
     ```
 
-3. Activate the snakemake environment with the relevant tools, i.e. mosdepth, bedtools and r-xlsx:
+4. Activate the snakemake environment with the relevant tools, i.e. mosdepth, bedtools and r-xlsx:
 
     ```bash
     conda activate /mnt/nas-5268189/ifh-rechenzentrum1/bioinformatik/conda/envs/coverage
     ```
 
-4. Start a dry run (-n) and estimate the numbers of jobs(-j) provided by snakemake:
+5. Start a dry run (-n) and estimate the numbers of jobs(-j) provided by snakemake:
 
     ```bash
     snakemake -j 48 -n
