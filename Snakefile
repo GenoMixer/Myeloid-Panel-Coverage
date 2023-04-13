@@ -325,6 +325,5 @@ rule rscript:
     params:  
        prefix="{sample}",
        run=RUN
-#    conda: "xlsx.yml"
     script: 'R_coverage_data_compilation.R'
 
