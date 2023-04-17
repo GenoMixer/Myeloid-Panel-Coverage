@@ -13,6 +13,9 @@ head, tail = os.path.split(WORK)
 RUN = tail.split("_")[0]
 print(RUN)
 
+# target directory
+myeloid_target_dir="/mnt/ngs-resources/transcript_annotations/refseq_hg19/TruSight-Myeloid-Amplicon-Panel/"
+
 # skip until match 
 class SkipUntilMatchWrapper(io.TextIOWrapper):
     def __init__(self, f, matcher, include_matching=False):
@@ -67,7 +70,7 @@ rule all:
 rule mosdepth:
     input:
         bam=get_bam,
-        bed="/mnt/ngs-resources/transcript_annotations/refseq_hg19/TruSight-Myeloid-Amplicon-Panel/TruSight-Myeloid-Amplicon-Panel.hg19.selected_transcripts_cds.sorted.int20.intersect_amplicons.bed"
+        bed=os.path.join(myeloid_target_dir, "TruSight-Myeloid-Amplicon-Panel.hg19.selected_transcripts_cds.sorted.int20.intersect_amplicons.bed")
     output:
         "coverage/{sample}.mosdepth.global.dist.txt",
         "coverage/{sample}.per-base.bed.gz",
@@ -162,7 +165,7 @@ rule intersect:
 rule intersect_two:
     input: 
         abed="coverage/{sample}.bases_lt_500_1based.txt",
-        bbed="/mnt/ngs-resources/transcript_annotations/refseq_hg19/TruSight-Myeloid-Amplicon-Panel/TruSight-Myeloid-Amplicon-Panel.hg19.selected_transcripts_cds.sorted.int20.intersect_amplicons.bed.all_bases_annotated.txt"
+        bbed=os.path.join(myeloid_target_dir, "TruSight-Myeloid-Amplicon-Panel.hg19.selected_transcripts_cds.sorted.int20.intersect_amplicons.bed.all_bases_annotated.txt")
     output: "coverage/{sample}.bases_lt_500_1based_annotated.txt"
     shell:
         """
@@ -238,7 +241,7 @@ rule genelists:
 rule cds_length:
     input:
         genes="coverage/{sample}.genelist",
-        cds="/mnt/ngs-resources/transcript_annotations/refseq_hg19/TruSight-Myeloid-Amplicon-Panel/TruSight-Myeloid-Amplicon-Panel.hg19.genes_selected_transcripts_intersect_amplicons_cdslengths.bed"
+        cds=os.path.join(myeloid_target_dir,"TruSight-Myeloid-Amplicon-Panel.hg19.genes_selected_transcripts_intersect_amplicons_cdslengths.bed"
     output: "coverage/{sample}.genelist_cds_lengths.txt"
     shell:
         """
