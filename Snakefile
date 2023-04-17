@@ -241,7 +241,7 @@ rule genelists:
 rule cds_length:
     input:
         genes="coverage/{sample}.genelist",
-        cds=os.path.join(myeloid_target_dir,"TruSight-Myeloid-Amplicon-Panel.hg19.genes_selected_transcripts_intersect_amplicons_cdslengths.bed"
+        cds=os.path.join(myeloid_target_dir,"TruSight-Myeloid-Amplicon-Panel.hg19.genes_selected_transcripts_intersect_amplicons_cdslengths.bed")
     output: "coverage/{sample}.genelist_cds_lengths.txt"
     shell:
         """
